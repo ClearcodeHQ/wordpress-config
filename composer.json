@@ -1,0 +1,30 @@
+{
+  "name": "clearcode/wordpress-config",
+  "type": "library",
+  "license": "GPL-3.0+",
+  "description": "Automagically define WordPress configuration constants from environment variables and .env file.",
+  "homepage": "https://clearcode.cc",
+  "authors": [
+    {
+      "name": "Clearcode",
+      "homepage": "https://github.com/ClearcodeHQ"
+    },
+    {
+      "name": "Piotr Niewiadomski",
+      "homepage": "https://github.com/PiotrPress"
+    }
+  ],
+  "keywords": [
+    "wordpress", "wp", "config", "wp-config", "configuration", "env", "dotenv", "environment", "blog", "cms", "composer"
+  ],
+  "support": {
+    "issues": "https://github.com/ClearcodeHQ/wordpress-config/issues"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "require": {
+    "php": ">=7.2",
+    "vlucas/phpdotenv": "*"
+  }
+}
