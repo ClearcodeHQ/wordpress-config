@@ -32,7 +32,7 @@ class Env {
 		'DB_USER',
 		'DB_PASSWORD',
 		'DB_HOST',
-		'DB_TABLE_PREFIX',
+		'DB_PREFIX',
 		'DB_CHARSET',
 		'DB_COLLATE',
 

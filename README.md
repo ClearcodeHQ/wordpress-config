@@ -26,7 +26,7 @@ try {
 	error_log( $exception->getMessage() );
 }
 
-$table_prefix = defined( 'DB_TABLE_PREFIX' ) ? DB_TABLE_PREFIX : 'wp_';
+$table_prefix = defined( 'DB_PREFIX' ) ? DB_PREFIX : 'wp_';
 
 if ( ! defined( 'ABSPATH' ) ) define( 'ABSPATH', __DIR__ . '/' );
 require_once( ABSPATH . 'wp-settings.php' );
@@ -40,7 +40,7 @@ DB_NAME=''
 DB_USER=''
 DB_PASSWORD=''
 DB_HOST='localhost'
-DB_TABLE_PREFIX='wp_'
+DB_PREFIX='wp_'
 
 AUTH_KEY=''
 SECURE_AUTH_KEY=''
@@ -70,7 +70,7 @@ Instead of `.env` file you can use environment variables e.g. defined in you Apa
 	SetEnv DB_USER ''
 	SetEnv DB_PASSWORD ''
 	SetEnv DB_HOST 'localhost'
-	SetEnv DB_TABLE_PREFIX 'wp_'
+	SetEnv DB_PREFIX 'wp_'
 
 	SetEnv AUTH_KEY ''
 	SetEnv SECURE_AUTH_KEY ''
