@@ -42,6 +42,8 @@ DB_NAME=''
 DB_USER=''
 DB_PASSWORD=''
 DB_HOST='localhost'
+DB_CHARSET='utf8mb4'
+DB_COLLATE=''
 DB_PREFIX='wp_'
 
 AUTH_KEY=''
@@ -72,6 +74,8 @@ Instead of `.env` file you can use environment variables e.g. defined in you Apa
 	SetEnv DB_USER ''
 	SetEnv DB_PASSWORD ''
 	SetEnv DB_HOST 'localhost'
+	SetEnv DB_CHARSET 'utf8mb4'
+	SetEnv DB_COLLATE ''
 	SetEnv DB_PREFIX 'wp_'
 
 	SetEnv AUTH_KEY ''
@@ -85,7 +89,7 @@ Instead of `.env` file you can use environment variables e.g. defined in you Apa
 
 	SetEnv WP_ENV 'prod'
 	SetEnv WP_VARS ''
-...	
+...
 </VirtualHost>
 ```
 
