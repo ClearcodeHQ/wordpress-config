@@ -24,6 +24,7 @@ try {
 	$env->load();
 } catch ( Exception $exception ) {
 	error_log( $exception->getMessage() );
+	exit;
 }
 
 $table_prefix = defined( 'DB_PREFIX' ) ? DB_PREFIX : 'wp_';
