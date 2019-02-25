@@ -138,7 +138,7 @@ class Env {
 	];
 
 	public function __construct( $path = __DIR__, $file = '.env' ) {
-		$dotenv = new Dotenv( $path, $file );
+		$dotenv = Dotenv::create( $path, $file );
 		$dotenv->load();
 
 		if ( self::isset( 'WP_VARS' ) ) {
