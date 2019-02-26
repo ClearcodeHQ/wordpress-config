@@ -138,6 +138,8 @@ class Env {
 	];
 
 	public function __construct( $path = __DIR__, $file = '.env' ) {
+		if ( defined( 'ABSPATH' ) ) self::set( 'ABSPATH', ABSPATH );
+
 		$dotenv = Dotenv::create( $path, $file );
 		$dotenv->load();
 
@@ -156,6 +158,12 @@ class Env {
 		elseif ( getenv( $name          ) ) $value = getenv( $name );
 
 		return self::convert( $value );
+	}
+
+	public static function set( $name, $value ) {
+		if ( ! isset( $_ENV[$name]    ) ) $_ENV[$name]    = $value;
+		if ( ! isset( $_SERVER[$name] ) ) $_SERVER[$name] = $value;
+		if ( ! getenv( $name          ) ) putenv( "$name=$value" );
 	}
 
 	public static function isset( $name ) {
@@ -181,7 +189,7 @@ class Env {
 		if ( ctype_digit( trim( $value ) ) ) return (int)$value;
 
 		if ( ( $value[0] === '"' && substr($value, -1) === '"' ) ||
-			 ( $value[0] === "'" && substr($value, -1) === "'" ) )
+		     ( $value[0] === "'" && substr($value, -1) === "'" ) )
 			return substr( $value, 1, -1 );
 
 		return $value;
