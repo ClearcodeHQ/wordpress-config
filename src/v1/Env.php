@@ -155,7 +155,8 @@ class Env {
 
 		elseif ( isset( $_ENV[$name]    ) ) $value = $_ENV[$name];
 		elseif ( isset( $_SERVER[$name] ) ) $value = $_SERVER[$name];
-		elseif ( getenv( $name          ) ) $value = getenv( $name );
+        elseif ( function_exists( 'getenv'        ) and getenv( $name        ) ) $value = getenv( $name );
+        elseif ( function_exists( 'apache_getenv' ) and apache_getenv( $name ) ) $value = apache_getenv( $name );
 
 		return self::convert( $value );
 	}
@@ -163,13 +164,17 @@ class Env {
 	public static function set( $name, $value ) {
 		if ( ! isset( $_ENV[$name]    ) ) $_ENV[$name]    = $value;
 		if ( ! isset( $_SERVER[$name] ) ) $_SERVER[$name] = $value;
-		if ( ! getenv( $name          ) ) putenv( "$name=$value" );
+		if ( function_exists( 'getenv' ) and ! getenv( $name ) and
+             function_exists( 'putenv' ) ) putenv( "$name=$value" );
+        if ( function_exists( 'apache_getenv' ) and ! apache_getenv( $name ) and
+             function_exists( 'apache_setenv' ) ) apache_setenv( $name, $value );
 	}
 
 	public static function isset( $name ) {
 		if ( isset( $_ENV[$name]    ) ) return true;
 		if ( isset( $_SERVER[$name] ) ) return true;
-		if ( getenv( $name          ) ) return true;
+        if ( function_exists( 'getenv'        ) and getenv( $name        ) ) return true;
+        if ( function_exists( 'apache_getenv' ) and apache_getenv( $name ) ) return true;
 
 		return false;
 	}
@@ -184,12 +189,13 @@ class Env {
 			case 'true'  : return true;
 			case 'false' : return false;
 			case 'null'  : return null;
+            case ''      : return '';
 		}
 
 		if ( ctype_digit( trim( $value ) ) ) return (int)$value;
 
-		if ( ( $value[0] === '"' && substr($value, -1) === '"' ) ||
-		     ( $value[0] === "'" && substr($value, -1) === "'" ) )
+		if ( ( $value[0] === '"' and substr( $value, -1 ) === '"' ) ||
+		     ( $value[0] === "'" and substr( $value, -1 ) === "'" ) )
 			return substr( $value, 1, -1 );
 
 		return $value;
