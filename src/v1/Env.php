@@ -1,20 +1,20 @@
 <?php
 
 /*
-    Copyright (C) 2018 by Clearcode <https://clearcode.cc>
-    and associates (see AUTHORS.txt file).
-    This file is part of clearcode/wordpress-config.
-    clearcode/wordpress-config is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-    clearcode/wordpress-config is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-    You should have received a copy of the GNU General Public License
-    along with clearcode/wordpress-config; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	Copyright (C) 2019 by Clearcode <https://clearcode.cc>
+	and associates (see AUTHORS.txt file).
+	This file is part of clearcode/wordpress-config.
+	clearcode/wordpress-config is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	clearcode/wordpress-config is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	You should have received a copy of the GNU General Public License
+	along with clearcode/wordpress-config; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 namespace Clearcode\Config\v1;
@@ -155,8 +155,8 @@ class Env {
 
 		elseif ( isset( $_ENV[$name]    ) ) $value = $_ENV[$name];
 		elseif ( isset( $_SERVER[$name] ) ) $value = $_SERVER[$name];
-        elseif ( function_exists( 'getenv'        ) and getenv( $name        ) ) $value = getenv( $name );
-        elseif ( function_exists( 'apache_getenv' ) and apache_getenv( $name ) ) $value = apache_getenv( $name );
+		elseif ( function_exists( 'getenv'        ) and getenv( $name        ) ) $value = getenv( $name );
+		elseif ( function_exists( 'apache_getenv' ) and apache_getenv( $name ) ) $value = apache_getenv( $name );
 
 		return self::convert( $value );
 	}
@@ -165,16 +165,16 @@ class Env {
 		if ( ! isset( $_ENV[$name]    ) ) $_ENV[$name]    = $value;
 		if ( ! isset( $_SERVER[$name] ) ) $_SERVER[$name] = $value;
 		if ( function_exists( 'getenv' ) and ! getenv( $name ) and
-             function_exists( 'putenv' ) ) putenv( "$name=$value" );
-        if ( function_exists( 'apache_getenv' ) and ! apache_getenv( $name ) and
-             function_exists( 'apache_setenv' ) ) apache_setenv( $name, $value );
+			function_exists( 'putenv' ) ) putenv( "$name=$value" );
+		if ( function_exists( 'apache_getenv' ) and ! apache_getenv( $name ) and
+			function_exists( 'apache_setenv' ) ) apache_setenv( $name, $value );
 	}
 
 	public static function isset( $name ) {
 		if ( isset( $_ENV[$name]    ) ) return true;
 		if ( isset( $_SERVER[$name] ) ) return true;
-        if ( function_exists( 'getenv'        ) and getenv( $name        ) ) return true;
-        if ( function_exists( 'apache_getenv' ) and apache_getenv( $name ) ) return true;
+		if ( function_exists( 'getenv'        ) and getenv( $name        ) ) return true;
+		if ( function_exists( 'apache_getenv' ) and apache_getenv( $name ) ) return true;
 
 		return false;
 	}
@@ -189,13 +189,13 @@ class Env {
 			case 'true'  : return true;
 			case 'false' : return false;
 			case 'null'  : return null;
-            case ''      : return '';
+			case ''      : return '';
 		}
 
 		if ( ctype_digit( trim( $value ) ) ) return (int)$value;
 
 		if ( ( $value[0] === '"' and substr( $value, -1 ) === '"' ) ||
-		     ( $value[0] === "'" and substr( $value, -1 ) === "'" ) )
+			 ( $value[0] === "'" and substr( $value, -1 ) === "'" ) )
 			return substr( $value, 1, -1 );
 
 		return $value;
