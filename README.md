@@ -20,7 +20,7 @@ Replace `wp-config.php` file content with:
 require_once __DIR__ . '/vendor/autoload.php';
 
 try {
-	$env = new Clearcode\Config\v1\Env( __DIR__ );
+	$env = new Clearcode\Config\Env( __DIR__ );
 	$env->load();
 } catch ( Exception $exception ) {
 	error_log( $exception->getMessage() );
@@ -56,7 +56,6 @@ SECURE_AUTH_SALT=''
 LOGGED_IN_SALT=''
 NONCE_SALT=''
 
-WP_ENV='prod'
 WP_VARS=''
 ```
 
@@ -88,7 +87,6 @@ Instead of `.env` file you can use environment variables e.g. defined in you Apa
 	SetEnv LOGGED_IN_SALT ''
 	SetEnv NONCE_SALT ''
 
-	SetEnv WP_ENV 'prod'
 	SetEnv WP_VARS ''
 ...
 </VirtualHost>

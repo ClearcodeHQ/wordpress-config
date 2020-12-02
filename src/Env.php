@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Copyright (C) 2019 by Clearcode <https://clearcode.cc>
+	Copyright (C) 2020 by Clearcode <https://clearcode.cc>
 	and associates (see AUTHORS.txt file).
 	This file is part of clearcode/wordpress-config.
 	clearcode/wordpress-config is free software; you can redistribute it and/or modify
@@ -17,13 +17,13 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-namespace Clearcode\Config\v1;
+namespace Clearcode\Config;
 
 use Dotenv\Dotenv;
 
 class Env {
 	protected $vars = [
-		'WP_ENV',
+		'WP_ENVIRONMENT_TYPE',
 
 		'WP_SITEURL',
 		'WP_HOME',
