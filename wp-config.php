@@ -22,7 +22,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 try {
-	$env = new Clearcode\Config\v1\Env( __DIR__ );
+	$env = new Clearcode\Config\Env( __DIR__ );
 	$env->load();
 } catch ( Exception $exception ) {
 	error_log( $exception->getMessage() );
