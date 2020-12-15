@@ -140,7 +140,7 @@ class Env {
 	public function __construct( $path = __DIR__, $file = '.env' ) {
 		if ( defined( 'ABSPATH' ) ) self::set( 'ABSPATH', ABSPATH );
 
-		$dotenv = Dotenv::create( $path, $file );
+		$dotenv = Dotenv::createImmutable( $path, $file );
 		$dotenv->load();
 
 		if ( self::isset( 'WP_VARS' ) ) {
