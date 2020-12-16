@@ -10,31 +10,7 @@ $ composer require clearcode/wordpress-config
 
 # Usage
 
-Replace `wp-config.php` file content with:
-
-```php
-<?php
-
-@ini_set( 'display_errors', 0 );
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-try {
-	$env = new Clearcode\Config\Env( __DIR__ );
-	$env->load();
-} catch ( Exception $exception ) {
-	error_log( $exception->getMessage() );
-	exit;
-}
-
-$table_prefix = defined( 'DB_PREFIX' ) ? DB_PREFIX : 'wp_';
-
-if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' == $_SERVER['HTTP_X_FORWARDED_PROTO'] ) $_SERVER['HTTPS'] = 'on';
-
-if ( ! defined( 'ABSPATH' ) ) define( 'ABSPATH', __DIR__ . '/' );
-require_once( ABSPATH . 'wp-settings.php' );
-
-```
+Copy `wp-config.php` file to WordPress' root directory.
 
 Create `.env` file and fill in the missing content:
 
@@ -96,4 +72,4 @@ You can use all WordPress configuration constants, optionally you can add your o
 
 # License
 
-GPL3.0+ see LICENSE.txt and AUTHORS.txt
+GPL3.0+ see [LICENSE.txt](LICENSE.txt) and [AUTHORS.txt](AUTHORS.txt)
